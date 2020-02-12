@@ -1,11 +1,11 @@
 /**
- * 
  * @author Adaptado por Diana Zaray Corado #191025
  * @author Lewis/Loftus (selectionSort e insertionSort)
- * @autor
- *
+ * @autor Wiliam McDaniel Albritton (mergeSort y quickSort), extraido de: https://www2.hawaii.edu/~walbritt/ics211/examples/Sorting.j
+ * @version 12/2/2020
  */
 public class sortingAlgorithms {
+
 
 	public static Comparable[] selectionSort(Comparable[] numbers) {
 		 int min;
@@ -26,7 +26,7 @@ public class sortingAlgorithms {
 	      return numbers;
 	}
 	
-	public static void insertionSort(Comparable[] numbers) {
+	public  Comparable[] insertionSort(Comparable[] numbers) {
 		
 		 for (int index = 1; index < numbers.length; index++)
 	      {
@@ -42,6 +42,7 @@ public class sortingAlgorithms {
 	            
 	         numbers[position] = key;
 	      }
+		 return numbers;
 	}
 	
 	/**
@@ -124,6 +125,60 @@ public class sortingAlgorithms {
 	         i=i+1;
 	      }
 	  }
+
+	/**
+	 * quick sort
+	 *
+	 * @param numbers is an array of Comparable objects
+	 * @param start is the first element in the array
+	 * @param end is the last element in the array
+	 */
+	public  void quickSort(Comparable[] numbers, int start, int end) {
+		if (start < end) {
+			// split the table into two parts
+			int pivot = partition(numbers, start, end);
+			// sort the two parts
+			quickSort(numbers, start, pivot - 1);
+			quickSort(numbers, pivot + 1, end);
+		}
+	}
+
+	/**
+	 * partitions the array into two parts: smaller or greater/equal part
+	 *
+	 * @param numbers is an array of Comparable objects
+	 * @param start is the first element in the array
+	 * @param end is the last element in the array
+	 * @return the index of the partition element
+	 */
+	private static int partition(Comparable[] numbers, int start, int end) {
+		// get pivot item (1st item)
+		Comparable pivot = numbers[start];
+		// index of end element in smaller part
+		int split = start;
+		// loop from 2nd element to end of array
+		for (int i = start + 1; i <= end; i++) {
+			// split elements in smaller part or greater/equal part
+			// if pivot is greater than array[i]
+			// then swap array[i], so it is in the smaller part
+			if (pivot.compareTo(numbers[i]) > 0) {
+				//increase size of smaller part
+				split = split + 1;
+				//swap, so item is in smaller part
+				Comparable temp = numbers[i];
+				numbers[i] = numbers[split];
+				numbers[split] = temp;
+			}
+		}
+		// swap pivot with last element in smaller part
+		// so pivot is between the two parts
+		numbers[start] = numbers[split];
+		numbers[split] = pivot;
+		//display swapped numbers
+		return split;
+	}
+
+
 
 
 
