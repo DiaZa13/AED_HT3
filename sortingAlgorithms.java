@@ -1,11 +1,13 @@
 /**
  * 
- * @author 
+ * @author Adaptado por Diana Zaray Corado #191025
+ * @author Lewis/Loftus (selectionSort e insertionSort)
+ * @autor
  *
  */
 public class sortingAlgorithms {
 
-	public static void selectionSort(Comparable[] numbers) {
+	public static Comparable[] selectionSort(Comparable[] numbers) {
 		 int min;
 	      Comparable temp;
 
@@ -21,6 +23,7 @@ public class sortingAlgorithms {
 	         numbers[min] = numbers[index];
 	         numbers[index] = temp;
 	      }
+	      return numbers;
 	}
 	
 	public static void insertionSort(Comparable[] numbers) {
@@ -45,93 +48,84 @@ public class sortingAlgorithms {
 	* merge sort
 	*
 	* @param array is an array of Comparable objects
-	*/
+
 	   public static void mergeSort(Comparable[] array) {
 	   //overloading: two methods with same name, but different parameter type and/or count
 	   //calls mergeSort method with 3 parameters
 	      mergeSort(array, 0, array.length-1);
 	   }
+	*/
 
 	/**
 	* merge sort
 	*
-	* @param array is an array of Comparable objects 	
+	* @param numbers is an array of Comparable objects
 	* @param start is the first element in the array  	
 	* @param end is the last element in the array 
 	*/ 	
-	   public static void mergeSort(Comparable[] array, int start, int end) {
-	   // if start index is less than end index
+	   public Comparable[] mergeSort(Comparable[] numbers, int start, int end) {
 	      if (start < end) {
 	         int half = (start + end) / 2;
-	      //show array split  
-	         //if(Sorting.display){  
-	            //System.out.println("SPLIT: start=" + start + ", half=" + half + ", end=" + end);  
-	         //}
-	      // sort left and right half of array
-	         mergeSort(array, start, half);
-	         mergeSort(array, half + 1, end);
-	      // merge left and right half of array
-	         merge(array, start, half, end);		
+	         mergeSort(numbers, start, half);
+	         mergeSort(numbers, half + 1, end);
+	         merge(numbers, start, half, end);
 	      }
+	      return numbers;
 	   }
 
 	/**
 	* merge: merges the two arrays back together
 	*
-	* @param array is an array of Comparable objects 	
+	* @param numbers is an array of Comparable objects
 	* @param start is the first element in the array  	
 	* @param half is the middle element in the array  		
 	* @param end is the last element in the array 
 	*/ 	
-	   private static void merge(Comparable[] array, int start, int half, int end) {
-	   //display 2 arrays before merge
-	      /**if(Sorting.display){  
-	         Sorting.print(array, start, half);
-	         Sorting.print(array, half+1, end); 
-	      }*/
-	   // temporary array
-	      Comparable[] temp = new Comparable[array.length];
-	   // index for 2 subarrays
+	   private void merge(Comparable[] numbers, int start, int half, int end) {
+	      Comparable[] temp = new Comparable[numbers.length];
+
 	      int start1 = start;
 	      int end1 = half;
 	      int start2 = half + 1;
 	      int end2 = end;
 	      int i = start1;
-	    //loop and copy to temp array, so that elements are sorted
+
 	      while ((start1 <= end1) && (start2 <= end2)) {
-	         if (array[start1].compareTo(array[start2]) < 0) {
-	            temp[i] = array[start1];
-	            //increment i and start1
+	         if (numbers[start1].compareTo(numbers[start2]) < 0) {
+	            temp[i] = numbers[start1];
+
 	            i = i + 1;
 	            start1 = start1 + 1;
 	         } 
 	         else {
-	            temp[i] = array[start2];
-	            //increment i and start2
+	            temp[i] = numbers[start2];
+
 	            i = i + 1;
 	            start2 = start2 + 1;
 	         }
 	      }
-	   // loop through either the first or second subarray and copy to temp array
+
 	      while (start1 <= end1) {
-	         temp[i] = array[start1];
-	      //increment i and start1
+	         temp[i] = numbers[start1];
+
 	         i = i + 1;
 	         start1 = start1 + 1;
 	      }
 	      while (start2 <= end2) {
-	         temp[i] = array[start2];
-	      //increment i and start2
+	         temp[i] = numbers[start2];
+
 	         i = i + 1;
 	         start2 = start2 + 1;
 	      }
-	   // copy back to actual array
+
 	      i = start;
 	      while (i <= end) {
-	         array[i] = temp[i];
+	         numbers[i] = temp[i];
 	         i=i+1;
 	      }
 	  }
+
+
 
 
 	
