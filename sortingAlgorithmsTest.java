@@ -36,7 +36,16 @@ class sortingAlgorithmsTest {
     void quickSort() {
         Integer[] numbers = {10,5,9,3,7};
         Integer[] ordernumbers = {3,5,7,9,10};
-        sort.mergeSort(numbers,0,numbers.length-1);
+        sort.quickSort(numbers,0,numbers.length-1);
+        for(int i = 0; i<numbers.length;i++)
+            assertEquals(ordernumbers[i],numbers[i]);
+    }
+
+    @Test
+    void rabixSort() {
+        Integer [] numbers = {10,5,9,3,7};
+        Integer [] ordernumbers = {3,5,7,9,10};
+        sort.radixSort(numbers);
         for(int i = 0; i<numbers.length;i++)
             assertEquals(ordernumbers[i],numbers[i]);
     }
