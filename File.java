@@ -16,6 +16,11 @@ public class File {
 	String linea, cadLista = " ";
 	Integer[] numbers = new Integer[3000];
 
+	/**
+	 * pre:
+	 * post: se crea un archivo que contiene numeros generados aleatoriomente
+	 * messyNumbers
+	 */
 	public void messyNumbers()
 	{
 		for(int a = 0; a < 3000 ; a++) {
@@ -46,6 +51,10 @@ public class File {
 		}
 	}
 
+	/**
+	 * pre:
+	 * post: se crea un archivo que contiene numeros generados de manera ordenada
+	 */
 	public void orderNumbers()
 	{
 		for(int a = 0; a < 3000 ; a++) {
@@ -75,6 +84,12 @@ public class File {
 		}
 	}
 
+	/**
+	 * pre: hay dos archivos con numeros ordenados/desordenados que necesitan ser leidos
+	 * post: lee uno de los dos archivos (ordenados/desordenados)
+	 * @param n determina que archivo sera el que se leera, 0-desordenado, 1-ordenado
+	 * @return caracter que contiene todos los valores leidos del archivo
+	 */
     public String readFile(int n){
 	File archivo = null;
     FileReader fr = null;
