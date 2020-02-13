@@ -1,15 +1,5 @@
-import java.io.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.lang.Comparable;
 import java.util.Arrays;
-import java.util.Scanner;
-
-import static java.lang.Integer.*;
-
-
 /**
- * 
  * @author Diana Zaray Corado #191025
  * @version 11/02/2020
  *
@@ -24,7 +14,6 @@ public class Sorts {
 		int n;
 		File file = new File();
 		sortingAlgorithms sort = new sortingAlgorithms();
-		//file.orderNumbers();
 		//file.messyNumbers();
 
 		cadLista = file.readFile();
@@ -33,10 +22,11 @@ public class Sorts {
 			int r = Integer.parseInt(arreglo[i]);
 			numbers[i] = r;
 		}
-		System.out.println(Arrays.toString(numbers));
-		System.out.println(Arrays.toString(sort.insertionSort(numbers)));
-
-
+		sort.insertionSort(numbers);
+		sort.quickSort(numbers,0,numbers.length-1);
+		sort.mergeSort(numbers,0,numbers.length-1);
+		sort.radixSort(numbers);
+		sort.selectionSort(numbers);
 	}
 
 }
