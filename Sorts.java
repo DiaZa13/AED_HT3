@@ -15,8 +15,8 @@ public class Sorts {
 		File file = new File();
 		sortingAlgorithms sort = new sortingAlgorithms();
 		//file.messyNumbers();
-
-		cadLista = file.readFile();
+		//Se modifica el parametro de readFile para leer un archivo con datos desordenados o datos ordenados
+		cadLista = file.readFile(0);
 		String[] arreglo = cadLista.split(" ");
 		for(int i = 0; i< arreglo.length;i++) {
 			int r = Integer.parseInt(arreglo[i]);
