@@ -5,7 +5,8 @@ import java.util.Arrays;
 /**
  * 
  * @author Diana Zaray Corado #191025
- * @author Adaptado de: Lectura_y_Escritura_de_Ficheros_en_Java, extraido de: http://chuwiki.chuidiang.org/index.php?
+ * @author Adaptado de: Lectura_y_Escritura_de_Ficheros_en_Java
+ * @see //chuwiki.chuidiang.org/index.php?
  * @version 11/2/2020
  *
  */
@@ -74,7 +75,7 @@ public class File {
 		}
 	}
 
-    public String readFile(){
+    public String readFile(int n){
 	File archivo = null;
     FileReader fr = null;
     BufferedReader br = null;
@@ -83,7 +84,10 @@ public class File {
         // Apertura del fichero y creacion de BufferedReader para poder
         // hacer una lectura comoda (disponer del metodo readLine()).
         //archivo = new File ("Numeros.txt");
-        fr = new FileReader ("Numeros.txt");
+			if(n == 0)
+        		fr = new FileReader ("Numeros.txt");
+			else
+				fr = new FileReader ("NumerosOrdenados.txt");
         br = new BufferedReader(fr);
 
         // Lectura del fichero
